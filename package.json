@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/l-alekseyeva/ReactJS_GB#readme",
   "dependencies": {
+    "moment": "^2.21.0",
     "react": "^16.2.0"
   },
   "devDependencies": {
