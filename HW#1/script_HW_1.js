@@ -125,6 +125,19 @@ while( !(question = generator.next(answer)).done ){
 console.log(question.value);
 
 // Задание №5
+// Немного доработанный ваш вариант, чтобы можно было увеличивать число выводимых данных
+
+let numArray = [];
+for (let i = 1; i <=10; i++) {
+  let num = i;
+  numArray.push(num);
+}
+
+Promise.all(numArray.map(i => fetch(`https://jsonplaceholder.typicode.com/users/${i}`).then(response => response.json()))).then(users => {
+    console.log(users);
+});
+
+
 // Ваш вариант
 
 Promise.all([1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(i => fetch(`https://jsonplaceholder.typicode.com/users/${i}`).then((response) => response.json()))).then(users => {
