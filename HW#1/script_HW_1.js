@@ -1,6 +1,6 @@
 // Задание №1
 
-let loop = (times = 0, callback = null) => {
+const loop = (times = 0, callback = null) => {
   if (typeof callback == 'function') {
     for (let i = 1; i <= times; i++) {
       callback(i);
@@ -94,18 +94,18 @@ class Developer extends Employee {
   }
 };
 
-manager1 = new Manager ('Вася', '18', '15.12.99', '123', 'Project Manager');
-manager2 = new Manager ('Автанзил','70','01.01.48','47','R&D Junior Vice-President');
+const manager1 = new Manager ('Вася', '18', '15.12.99', '123', 'Project Manager');
+const manager2 = new Manager ('Автанзил','70','01.01.48','47','R&D Junior Vice-President');
 
-developer1 = new Developer ('Акакий', '18', '15.11.99', '321', 'Middle', manager1);
-developer2 = new Developer ('Петя', '21', '15.11.95', '456', 'Junior', manager2);
+const developer1 = new Developer ('Акакий', '18', '15.11.99', '321', 'Middle', manager1);
+const developer2 = new Developer ('Петя', '21', '15.11.95', '456', 'Junior', manager2);
 
 console.log(manager1.allDevelopers);
 
 // Задание №4
 
 function* quiz() {
-  let questionnaire = {
+  const questionnaire = {
     name: 'Как вас зовут?',
     age: 'Сколько вам лет?',
     city: 'Откуда вы?'
@@ -125,18 +125,10 @@ while( !(question = generator.next(answer)).done ){
 console.log(question.value);
 
 // Задание №5
-// Немного доработанный ваш вариант, чтобы можно было увеличивать число выводимых данных
 
-let numArray = [];
-for (let i = 1; i <=10; i++) {
-  let num = i;
-  numArray.push(num);
-}
-
-Promise.all(numArray.map(i => fetch(`https://jsonplaceholder.typicode.com/users/${i}`).then(response => response.json()))).then(users => {
-    console.log(users);
+Promise.all(Array(10).fill(0).map((i) => fetch(`https://jsonplaceholder.typicode.com/users/${i + 1}`).then((response) => response.json()))).then(users => {
+  console.log(users);
 });
-
 
 // Ваш вариант
 
