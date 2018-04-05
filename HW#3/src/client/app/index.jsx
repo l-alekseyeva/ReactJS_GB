@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 
-import Content from './components/content';
-import Footer from './components/footer';
+
+import Content from './components/Content';
+import Footer from './components/Footer';
 
 class App extends Component {
   render() {
