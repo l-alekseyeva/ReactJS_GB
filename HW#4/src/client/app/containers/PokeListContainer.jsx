@@ -23,10 +23,10 @@ export default class PokeListContainer extends PureComponent {
       .then(pokemons => {
         this.setState({
           loading: false,
-          pokemons
+          pokemons: pokemons.results
         });
-
       });
+
   }
   render() {
     const { loading, pokemons } = this.state;
