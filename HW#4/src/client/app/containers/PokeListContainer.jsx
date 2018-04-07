@@ -30,6 +30,7 @@ export default class PokeListContainer extends PureComponent {
   }
   render() {
     const { loading, pokemons } = this.state;
+
     return (
       <div>
         {loading ? 'Идет загрузка' : <PokeList pokemons={pokemons} />}

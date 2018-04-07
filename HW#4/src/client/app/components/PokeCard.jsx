@@ -3,20 +3,25 @@ import PropTypes from 'prop-types';
 
 export default class PokeCard extends PureComponent {
   static propTypes = {
-    id: PropTypes.number,
-    name: PropTypes.string
+    url: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    id: PropTypes.string.isRequired
   };
 
-  static defaultProps = {
-    image: 0,
+  getId = (url) => {
+    const urlArray = url.split('/');
+    return urlArray[urlArray.length-2];
   }
 
   render() {
-    const { id, name } = this.props;
+    const { url, name } = this.props;
+
+
     return (
       <div className="pokeCard">
-        <img src={'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/'+id+'.png'} />
         <p>{name}</p>
+        <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${this.getId(url)}.png`} />
+
       </div>
     );
   }

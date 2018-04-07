@@ -6,8 +6,9 @@ import PokeCard from './PokeCard'
 export default class PokeList extends PureComponent {
   static propTypes = {
     pokemons: PropTypes.arrayOf({
+      url: PropTypes.string.isRequired,
       name: PropTypes.string.isRequired,
-      id: PropTypes.number,
+      id: PropTypes.string.isRequired
     })
   };
 

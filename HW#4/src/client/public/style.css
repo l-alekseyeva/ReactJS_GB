@@ -104,9 +104,13 @@ footer {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   background-color: RGBA(225, 188, 225, 0.8);
   margin: 5px;
+}
+
+.pokeCard > p {
+  padding-top: 15px;
 }
 
 .pokeCard:hover {
