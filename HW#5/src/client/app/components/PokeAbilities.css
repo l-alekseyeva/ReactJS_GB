@@ -1,0 +1,11 @@
+.pokeAbilities {
+  display: none;
+}
+
+
+.pokeAbilities ul {
+  padding: 0px;
+  list-style: none;
+  margin: 0;
+  font-size: 0.7em;
+}

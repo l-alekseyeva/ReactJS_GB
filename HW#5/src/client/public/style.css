@@ -1,0 +1,136 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat')
+
+* {
+  margin: 0;
+}
+
+html {
+  min-height: 100%;
+  position: relative;
+}
+
+body {
+  margin: 0;
+  font-family: 'Montserrat', sans-serif;
+  background-color: indianred;
+  color: brown;
+  font-weight: 700;
+}
+
+.body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+header, footer {
+  background-color: lightgreen;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  min-width: 100%;
+}
+
+header {
+  justify-content: space-between;
+}
+
+.menu > ul {
+  padding: 0px;
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  margin: 0;
+}
+
+.menu > li {
+  border-left: 1px solid brown;
+  width: 100px;
+}
+
+.menu > li > a {
+  padding: 0 10px;
+  height: 50px;
+  color: brown;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+li > a:hover {
+  background-color: brown;
+  color: lightgreen;
+}
+
+.menu > li:last-child {
+  border-right: 1px solid brown;
+}
+
+button {
+  width: 80px;
+  height: 36px;
+  margin-right: 10px;
+}
+
+.content {
+min-height: 100%;
+}
+
+.main {
+  min-height: 100%;
+  margin: 10px 0;
+  color: bisque;
+  font-weight: 400;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.main > p {
+  margin: 0 10px;
+  text-align: justify;
+  width: 300px;
+}
+
+footer {
+  justify-content: center;
+}
+
+.pokeCard {
+  width: 200px;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  background-color: RGBA(225, 188, 225, 0.8);
+  margin: 5px;
+}
+
+.pokeCard > p {
+  padding-top: 15px;
+  text-transform: capitalize;
+}
+
+.pokeCard:hover {
+  background-color: RGBA(225, 188, 225, 0.3);
+}
+
+.pokeList {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.pokeAbilities {
+  display: none;
+}
+
+
+.pokeAbilities > ul {
+  padding: 0px;
+  list-style: none;
+  margin: 0;
+  font-size: 0.7em;
+}
