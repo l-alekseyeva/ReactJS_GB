@@ -12,14 +12,14 @@ export default class PokeCard extends PureComponent {
   };
 
   static defaultProps = {
-    abilities: [],
+    pokeAbilities: [],
   }
 
   constructor(props){
     super(props);
 
     this.state = {
-      abilities: [],
+      pokeAbilities: [],
       loading: false
     };
   }
@@ -29,32 +29,22 @@ export default class PokeCard extends PureComponent {
     return urlArray[urlArray.length-2];
   }
 
-  showPokeAbilities = (url) => {
-    this.setState({
-      loading: true,
-      abilities: []
-    });
+  clickHandler = (url) => {
+    const { onPokeClick } = this.props;
 
-    fetch(url)
-      .then(res => res.json())
-      .then(abilities => {
-        this.setState({
-          loading: false,
-          abilities: abilities
-        });
-        console.log(abilities)
-      });
-  }
+    if(typeof onPokeClick === 'function') {
+      onPokeClick(url);
+    }
+  };
 
   render() {
-    const { url, name } = this.props;
-
+    const { url, name, pokeAbilities } = this.props;
 
     return (
-      <div className={`pokeCard`} id={`${this.getId(url)}`} onClick={this.showPokeAbilities}>
+      <div className={`pokeCard`} id={`${this.getId(url)}`} onClick={this.clickHandler(url)}>
         <p>{name}</p>
         <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${this.getId(url)}.png`} />
-        <PokeAbilities />
+        <PokeAbilities pokeAbilities={pokeAbilities}/>
 
       </div>
     );

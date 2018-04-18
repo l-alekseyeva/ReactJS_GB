@@ -5,24 +5,24 @@ import style from './PokeAbilities.css'
 
 export default class PokeAbilities extends PureComponent {
   static propTypes = {
-    abilities: PropTypes.arrayOf({
+    pokeAbilities: PropTypes.arrayOf({
       name: PropTypes.string,
-      weigth: PropTypes.string,
-      heigth: PropTypes.string,
-      base_experience: PropTypes.string
+      weight: PropTypes.number,
+      height: PropTypes.number,
+      base_experience: PropTypes.number
     })
 
   };
 
   render() {
-    const { abilities } = this.props;
+    const { pokeAbilities } = this.props;
 
     return (
-      <div className={`pokeAbilities ${style}`} showAbilities= {this.showPokeAbilities}>
-        <ul>
-          <li>Вес: {abilities.weight}</li>
-          <li>Рост: {abilities.height}</li>
-          <li>Базовый опыт: {abilities.base_experience}</li>
+      <div className={`pokeAbilities ${style}`} >
+        <ul >
+          <li>Вес: {pokeAbilities.weight}</li>
+          <li>Рост: {pokeAbilities.height}</li>
+          <li>Базовый опыт: {pokeAbilities.base_experience}</li>
         </ul>
 
       </div>

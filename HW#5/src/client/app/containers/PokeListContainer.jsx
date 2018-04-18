@@ -9,6 +9,7 @@ export default class PokeListContainer extends PureComponent {
 
     this.state = {
       pokemons: [],
+      pokeAbilities: [],
       loading: false
     };
   }
@@ -18,7 +19,7 @@ export default class PokeListContainer extends PureComponent {
       loading: true
     });
 
-    fetch('https://pokeapi.co/api/v2/pokemon/?limit=949')
+    fetch('https://pokeapi.co/api/v2/pokemon/?limit=10&offset=0')
       .then(res => res.json())
       .then(pokemons => {
         this.setState({
@@ -26,14 +27,29 @@ export default class PokeListContainer extends PureComponent {
           pokemons: pokemons.results
         });
       });
-
   }
+
+  showPokeAbilities = (url) => {
+    this.setState({
+      loading: true,
+    });
+
+    fetch(url)
+      .then(res => res.json())
+      .then(pokeAbilities => {
+        this.setState({
+          loading: false,
+          pokeAbilities: pokeAbilities
+        });
+      });
+  }
+
   render() {
     const { loading, pokemons } = this.state;
 
     return (
       <div>
-        {loading ? 'Идет загрузка' : <PokeList pokemons={pokemons} />}
+        {loading ? 'Идет загрузка' : <PokeList pokemons={pokemons} showAbilities={this.showPokeAbilities}/>}
       </div>
     );
   }

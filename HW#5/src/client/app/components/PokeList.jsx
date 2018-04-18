@@ -18,19 +18,20 @@ export default class PokeList extends PureComponent {
     pokemons: [],
   }
 
-  clickHandler = (event) => {
-    const { showAbilities, id } = this.props;
+  handlePokeClick = (url) => {
+    const { showAbilities } = this.props;
 
     if (typeof showAbilities === 'function') {
-      showAbilities(id);
+      showAbilities(url);
     }
   }
+
 
   render() {
     const { pokemons } = this.props;
     return (
       <div className="pokeList">
-        {pokemons.map(pokemon => <PokeCard {...pokemon} showAbilities={this.clickHandler}/>)}
+        {pokemons.map(pokemon => <PokeCard {...pokemon} onPokeClick={this.handlePokeClick}/>)}
       </div>
     );
   }
