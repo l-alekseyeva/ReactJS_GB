@@ -19,7 +19,7 @@ export default class PokeCard extends PureComponent {
     super(props);
 
     this.state = {
-      pokeAbilities: [],
+      pokeAbilities: this.pokeAbilities,
       loading: false
     };
   }
@@ -29,11 +29,11 @@ export default class PokeCard extends PureComponent {
     return urlArray[urlArray.length-2];
   }
 
-  clickHandler = (url) => {
-    const { onPokeClick } = this.props;
+  clickHandler = (event) => {
+    const { showPokeAbilities, url } = this.props;
 
-    if(typeof onPokeClick === 'function') {
-      onPokeClick(url);
+    if(typeof showPokeAbilities === 'function') {
+      showPokeAbilities(url);
     }
   };
 
@@ -41,10 +41,10 @@ export default class PokeCard extends PureComponent {
     const { url, name, pokeAbilities } = this.props;
 
     return (
-      <div className={`pokeCard`} id={`${this.getId(url)}`} onClick={this.clickHandler(url)}>
+      <div className={`pokeCard`} id={`${this.getId(url)}`} onClick={this.clickHandler}>
         <p>{name}</p>
         <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${this.getId(url)}.png`} />
-        <PokeAbilities pokeAbilities={pokeAbilities}/>
+        <PokeAbilities pokeAbilities={this.props.pokeAbilities}/>
 
       </div>
     );

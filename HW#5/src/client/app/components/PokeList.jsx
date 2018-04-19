@@ -18,20 +18,27 @@ export default class PokeList extends PureComponent {
     pokemons: [],
   }
 
-  handlePokeClick = (url) => {
-    const { showAbilities } = this.props;
+  showAbilities = (url) => {
+    this.setState({
+      loading: true,
+    });
 
-    if (typeof showAbilities === 'function') {
-      showAbilities(url);
-    }
+    fetch(url)
+      .then(res => res.json())
+      .then(pokeAbilities => {
+        this.setState({
+          loading: false,
+          pokeAbilities: pokeAbilities
+        });
+        console.log('Click on ' + pokeAbilities.name + '. Weight: '+ pokeAbilities.weight);
+      });
   }
 
-
   render() {
-    const { pokemons } = this.props;
+    const { pokemons, pokeAbilities } = this.props;
     return (
       <div className="pokeList">
-        {pokemons.map(pokemon => <PokeCard {...pokemon} onPokeClick={this.handlePokeClick}/>)}
+        {pokemons.map(pokemon => <PokeCard {...pokemon} pokeAbilities={this.pokeAbilities} showPokeAbilities={this.showAbilities}/>)}
       </div>
     );
   }

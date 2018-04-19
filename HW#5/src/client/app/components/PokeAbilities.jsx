@@ -18,7 +18,7 @@ export default class PokeAbilities extends PureComponent {
     const { pokeAbilities } = this.props;
 
     return (
-      <div className={`pokeAbilities ${style}`} >
+      <div className={style.pokeAbilities} >
         <ul >
           <li>Вес: {pokeAbilities.weight}</li>
           <li>Рост: {pokeAbilities.height}</li>
