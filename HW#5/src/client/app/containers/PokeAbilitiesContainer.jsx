@@ -13,7 +13,7 @@ export default class PokeAbilitiesContainer extends PureComponent {
     };
   }
 
-  showAbilities = (url) => {
+  showAbilities = (url) => () => {
     this.setState({
       abilitiesLoading: true,
     });
@@ -23,16 +23,13 @@ export default class PokeAbilitiesContainer extends PureComponent {
       .then(pokeAbilities => {
         this.setState({
           pokeAbilities: pokeAbilities,
-          abilitiesLoading: false
+          abilitiesLoading: true
         });
-        console.log('Click on ' + pokeAbilities.name + '. Weight: '+ pokeAbilities.weight);
       });
-
   }
 
   render() {
     const { abilitiesLoading, pokeAbilities, pokeUrl } = this.state;
-    console.log(this.props.pokeUrl);
     return (
       <div>
         <button onClick={this.showAbilities(this.props.pokeUrl)}> Abilities</button>

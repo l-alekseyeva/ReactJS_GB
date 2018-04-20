@@ -15,10 +15,13 @@ HW#5
 
 Файл PokeCard.jsx - карточка одного покемона.
 Файл PokeList.jsx - вывод всех карточек
+Файл PokeAbilities.css - стили для PokeAbilities.jsx
+Файл PokeAbilities.jsx - описание вида вывода характеристик покемона
 Файл footer.jsx - подвал сайта.
 
 Папка src/client/app/container:
 Файл PokeListContainer.jsx - ajax запрос данных по покемонам
+Файл PokeAbilitiesContainer.jsx - ajax запрос характеристик, url для запроса принимается из родительского элемента PokeCard.jsx
 
 Файл index.jsx - сборка всего сайта, объединяются файлы PokeListContainer.jsx и footer.jsx.
 
