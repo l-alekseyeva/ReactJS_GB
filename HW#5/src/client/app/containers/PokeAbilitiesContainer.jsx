@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 
-import PokeList from '../components/PokeAbilities'
+import PokeAbilities from '../components/PokeAbilities'
 
 export default class PokeAbilitiesContainer extends PureComponent {
   constructor(props){
@@ -9,31 +9,35 @@ export default class PokeAbilitiesContainer extends PureComponent {
 
     this.state = {
       pokeAbilities: [],
-      loading: false
+      abilitiesLoading: false
     };
   }
 
-  showPokeAbilities = (url) => {
+  showAbilities = (url) => {
     this.setState({
-      loading: true
+      abilitiesLoading: true,
     });
 
     fetch(url)
       .then(res => res.json())
       .then(pokeAbilities => {
         this.setState({
-          loading: false,
-          pokeAbilities: pokeAbilities
+          pokeAbilities: pokeAbilities,
+          abilitiesLoading: false
         });
+        console.log('Click on ' + pokeAbilities.name + '. Weight: '+ pokeAbilities.weight);
       });
+
   }
 
   render() {
-    const { loading, pokeAbilities } = this.state;
-
+    const { abilitiesLoading, pokeAbilities, pokeUrl } = this.state;
+    console.log(this.props.pokeUrl);
     return (
       <div>
-        {loading ? 'Идет загрузка' : <PokeAbilities pokeAbilities={pokeAbilities} showAbilities={this.showPokeAbilities}/>}
+        <button onClick={this.showAbilities(this.props.pokeUrl)}> Abilities</button>
+
+        {abilitiesLoading && <PokeAbilities pokeAbilities={pokeAbilities} />}
       </div>
     );
   }

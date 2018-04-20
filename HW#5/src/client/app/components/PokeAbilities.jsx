@@ -5,7 +5,7 @@ import style from './PokeAbilities.css'
 
 export default class PokeAbilities extends PureComponent {
   static propTypes = {
-    pokeAbilities: PropTypes.arrayOf({
+    pokeAbilities: PropTypes.shape({
       name: PropTypes.string,
       weight: PropTypes.number,
       height: PropTypes.number,
